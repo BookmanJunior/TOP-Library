@@ -50,6 +50,7 @@ h1 {
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 150px);
+  gap: 1.5em;
 }
 
 /* Card Styles */
