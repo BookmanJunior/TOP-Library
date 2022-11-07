@@ -16,6 +16,7 @@
 
 body {
   height: 100vh;
+  background-color: var(--color-background);
 }
 
 /* General Styles */
@@ -24,7 +25,6 @@ body {
   display: grid;
   grid-template-rows: 70px auto;
   height: 100vh;
-  background-color: var(--color-background);
 }
 
 header {
@@ -45,4 +45,58 @@ h1 {
 .main-content {
   width: 80%;
   justify-self: center;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 150px);
+}
+
+/* Card Styles */
+
+.card {
+  height: 210px;
+  display: grid;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.cover,
+.actions,
+.content {
+  grid-column: 1;
+  grid-row: 1 / 2;
+}
+
+.card .cover {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.content {
+  background-color: var(--color-content-overlay);
+  place-self: end auto;
+  padding: 5px 10px;
+}
+
+.book-info {
+  color: var(--color-text);
+  margin-bottom: 3px;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.author {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.user-progress-data {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--color-deep-blush);
 }
