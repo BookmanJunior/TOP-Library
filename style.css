@@ -5,6 +5,7 @@
   --color-section-title: #000000;
   --color-content-overlay: #311f2fcc;
   --color-deep-blush: #e85fb2;
+  --color-header-background: #2b2d42;
 }
 
 * {
@@ -29,7 +30,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #2b2d42;
+  background-color: var(--color-header-background);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
