@@ -24,6 +24,7 @@ body {
   display: grid;
   grid-template-rows: 70px auto;
   height: 100vh;
+  background-color: var(--color-background);
 }
 
 header {
@@ -37,4 +38,11 @@ header {
 h1 {
   color: var(--color-text);
   letter-spacing: 3px;
+}
+
+/* Main content styles */
+
+.main-content {
+  width: 80%;
+  justify-self: center;
 }
