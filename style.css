@@ -101,7 +101,8 @@ h1 {
 }
 
 .title {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  margin-bottom: 2px;
 }
 
 .author {
