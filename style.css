@@ -3,8 +3,9 @@
 :root {
   --color-background: #edf1f5;
   --color-foreground: #fafafa;
-  --color-text: #ffffff;
+  --color-text: #5c728a;
   --color-section-title: #000000;
+  --color-content-text: #ffffff;
   --color-content-overlay: #311f2fcc;
   --color-deep-blush: #e85fb2;
   --color-header-background: #2b2d42;
@@ -19,6 +20,7 @@
 body {
   height: 100vh;
   background-color: var(--color-background);
+  color: var(--color-text);
   font-family: "Roboto", sans-serif;
 }
 
@@ -39,7 +41,7 @@ header {
 }
 
 h1 {
-  color: var(--color-text);
+  color: var(--color-content-text);
   letter-spacing: 3px;
 }
 
@@ -94,7 +96,7 @@ h1 {
 }
 
 .book-info {
-  color: var(--color-text);
+  color: var(--color-content-text);
 }
 
 .title {
