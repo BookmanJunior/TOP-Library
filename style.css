@@ -46,7 +46,7 @@ h1 {
 /* Main content styles */
 
 .main-content {
-  width: 80%;
+  width: 60%;
   justify-self: center;
 }
 
@@ -84,6 +84,7 @@ h1 {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  overflow: hidden;
 }
 
 .content {
