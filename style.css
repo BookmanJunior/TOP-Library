@@ -136,7 +136,7 @@ h1 {
   position: fixed;
   width: min(1000px, 90%);
   height: min(600px, 90%);
-  background-color: var(--color-background);
+  background-color: var(--color-foreground);
   border-radius: 3px;
 }
 
