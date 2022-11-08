@@ -127,14 +127,15 @@ h1 {
   height: 100%;
   background-color: rgb(0, 0, 0, 0.5);
   top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal {
   position: fixed;
-  top: 15%;
-  left: 25%;
-  width: min(1000px, 70%);
-  height: min(600px, 70%);
+  width: min(1000px, 90%);
+  height: min(600px, 90%);
   background-color: var(--color-background);
   border-radius: 3px;
 }
