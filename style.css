@@ -131,11 +131,12 @@ h1 {
 
 .modal {
   position: fixed;
-  top: 25%;
+  top: 15%;
   left: 25%;
   width: min(1000px, 70%);
   height: min(600px, 70%);
   background-color: var(--color-background);
+  border-radius: 3px;
 }
 
 .exit-btn {
@@ -146,4 +147,30 @@ h1 {
 
 .exit-btn:hover {
   color: var(--color-blue);
+}
+
+.modal-header {
+  background-color: var(--color-header-background);
+}
+
+.modal-cover-container {
+  height: 150px;
+  width: 100px;
+  border-radius: 3px;
+}
+
+.modal-cover {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  object-position: center;
+}
+
+.save-btn {
+  background-color: var(--color-blue);
+  border-radius: 3px;
+  color: var(--color-content-text);
+  outline: none;
+  border: none;
+  padding: 8px 12px;
 }
