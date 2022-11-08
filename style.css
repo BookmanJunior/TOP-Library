@@ -193,3 +193,8 @@ h1 {
   place-self: end;
   cursor: pointer;
 }
+
+.modal-body {
+  padding: 50px;
+  padding-top: 70px;
+}
