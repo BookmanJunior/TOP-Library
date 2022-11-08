@@ -7,8 +7,9 @@
   --color-section-title: #000000;
   --color-content-text: #ffffff;
   --color-content-overlay: #311f2fcc;
-  --color-deep-blush: #e85fb2;
   --color-header-background: #2b2d42;
+  --color-deep-blush: #e85fb2;
+  --color-blue: #3db4f2;
 }
 
 * {
@@ -140,4 +141,9 @@ h1 {
 .exit-btn {
   font-size: 1.5rem;
   cursor: pointer;
+  margin-inline: 5px;
+}
+
+.exit-btn:hover {
+  color: var(--color-blue);
 }
