@@ -159,7 +159,7 @@ h1 {
   color: var(--color-blue);
 }
 
-.book-info {
+.modal-header .book-info {
   display: flex;
   align-items: end;
   gap: 1.5em;
