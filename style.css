@@ -226,6 +226,7 @@ select,
 textarea {
   background-color: var(--color-background);
   color: var(--color-text);
+  border-radius: 3px;
   border: none;
   outline: none;
   padding: 8px 15px;
