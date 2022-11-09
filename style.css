@@ -118,6 +118,24 @@ h1 {
   margin-block: 3px;
 }
 
+/* Add button styles */
+
+.add-btn {
+  display: grid;
+  place-content: center;
+  position: fixed;
+  bottom: 10%;
+  right: 15%;
+  height: 48px;
+  width: 48px;
+  background-color: var(--color-blue);
+  font-size: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--color-foreground);
+  user-select: none;
+}
+
 /* Modal styles */
 
 .modal-container {
@@ -126,7 +144,7 @@ h1 {
   height: 100%;
   background-color: rgb(0, 0, 0, 0.5);
   top: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
