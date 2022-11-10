@@ -170,10 +170,6 @@ h1 {
   cursor: pointer;
 }
 
-.action-btn svg {
-  height: 65%;
-}
-
 .card:hover .actions {
   opacity: 1;
 }
@@ -189,6 +185,12 @@ h1 {
 
 .delete-btn svg {
   stroke: var(--color-foreground);
+}
+
+.edit-btn svg,
+.delete-btn svg {
+  height: 70%;
+  pointer-events: none;
 }
 
 .delete-btn:hover {
