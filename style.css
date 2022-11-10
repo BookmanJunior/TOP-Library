@@ -217,6 +217,7 @@ h1 {
   background-color: var(--color-foreground);
   border-radius: 3px;
   overflow: auto;
+  animation: modalOpen 300ms ease-in-out;
 }
 
 .modal-header {
@@ -308,4 +309,16 @@ textarea {
   border: none;
   outline: none;
   padding: 8px 15px;
+}
+
+/* Animations */
+
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+  }
 }
