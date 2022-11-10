@@ -147,6 +147,53 @@ h1 {
   transform: scale(0.9);
 }
 
+.actions {
+  place-self: start end;
+  z-index: 99;
+  margin-top: 10px;
+  margin-right: 10px;
+  opacity: 0;
+  user-select: none;
+  transition: 100ms;
+}
+
+.action-btn {
+  background-color: var(--color-deep-blush);
+  border-radius: 3px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 200ms;
+  cursor: pointer;
+}
+
+.action-btn svg {
+  height: 65%;
+}
+
+.card:hover .actions {
+  opacity: 1;
+}
+
+.action-btn:active {
+  transform: scale(0.9);
+}
+
+.delete-btn {
+  margin-top: 5px;
+  background-color: var(--color-deep-blush);
+}
+
+.delete-btn svg {
+  stroke: var(--color-foreground);
+}
+
+.delete-btn:hover {
+  background-color: #e85f5f;
+}
+
 /* Modal styles */
 
 .modal-container {
