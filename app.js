@@ -2,24 +2,24 @@ let myLibrary = [];
 
 const addBtn = document.querySelector(".add-btn");
 const modalContainer = document.querySelector(".modal-container");
-const modal = modalContainer.querySelector(".modal");
-const form = document.querySelector("form");
-const bookData = Array.from(form.elements);
+const bookForm = document.querySelector("form");
+const bookData = Array.from(bookForm.elements);
 
 addBtn.addEventListener("click", openModal);
 modalContainer.addEventListener("click", closeModal);
+bookForm.addEventListener("submit", addBookToLibrary);
 
 function Book(
-  title,
-  author,
-  coverImg,
-  readStatus,
-  score,
-  chapterCount,
-  chapterProgress,
-  startDate,
-  finishDate,
-  notes
+  title = bookData[1].value,
+  author = bookData[2].value,
+  coverImg = bookData[3].value,
+  readStatus = bookData[4].value,
+  score = bookData[5].value,
+  chapterCount = bookData[6].value,
+  chapterProgress = bookData[7].value,
+  startDate = bookData[8].value,
+  finishDate = bookData[9].value,
+  notes = bookData[10].value
 ) {
   this.title = title;
   this.author = author;
@@ -33,7 +33,13 @@ function Book(
   this.notes = notes;
 }
 
-function addBookToLibrary() {}
+function addBookToLibrary(e) {
+  e.preventDefault();
+  const newBook = new Book();
+  myLibrary.push(newBook);
+  bookForm.reset();
+  modalContainer.style.display = "none";
+}
 
 function openModal() {
   modalContainer.style.display = "flex";
