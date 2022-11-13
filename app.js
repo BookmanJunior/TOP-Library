@@ -43,13 +43,11 @@ function addBookToLibrary(e) {
 }
 
 function displayBook() {
-  const readingList = document.querySelector(".list-reading");
-
   for (let i = 0; i < myLibrary.length; i++) {
-    if (myLibrary[i].status === "reading") {
-      readingList.appendChild(createBookStructure(myLibrary[i]));
-      console.log("success");
-    }
+    const statusSection = document.querySelector(
+      `.list-${myLibrary[i].status}`
+    );
+    statusSection.appendChild(createBookStructure(myLibrary[i], i));
   }
 }
 
