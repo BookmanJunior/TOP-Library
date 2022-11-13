@@ -10,6 +10,7 @@
   --color-header-background: #2b2d42;
   --color-deep-blush: #e85fb2;
   --color-blue: #3db4f2;
+  --main-border-radius: 3px;
 }
 
 * {
@@ -160,7 +161,7 @@ h1 {
 
 .action-btn {
   background-color: var(--color-deep-blush);
-  border-radius: 3px;
+  border-radius: var(--main-border-radius);
   height: 30px;
   width: 30px;
   display: flex;
@@ -215,7 +216,7 @@ h1 {
   width: min(1000px, 90%);
   height: 70%;
   background-color: var(--color-foreground);
-  border-radius: 3px;
+  border-radius: var(--main-border-radius);
   overflow: auto;
   animation: modalOpen 300ms ease-in-out;
 }
@@ -249,7 +250,7 @@ h1 {
 .modal-cover-container {
   height: 150px;
   width: 100px;
-  border-radius: 3px;
+  border-radius: var(--main-border-radius);
   position: relative;
   top: 50px;
 }
@@ -263,7 +264,7 @@ h1 {
 
 .save-btn {
   background-color: var(--color-blue);
-  border-radius: 3px;
+  border-radius: var(--main-border-radius);
   color: var(--color-content-text);
   outline: none;
   border: none;
@@ -305,7 +306,7 @@ select,
 textarea {
   background-color: var(--color-background);
   color: var(--color-text);
-  border-radius: 3px;
+  border-radius: var(--main-border-radius);
   border: none;
   outline: none;
   padding: 8px 15px;
