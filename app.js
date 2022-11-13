@@ -47,7 +47,7 @@ function displayBook() {
     const statusSection = document.querySelector(
       `.list-${myLibrary[i].status}`
     );
-    statusSection.appendChild(createBookStructure(myLibrary[i], i));
+    statusSection.appendChild(createBookStructure(myLibrary[i]));
   }
 }
 
