@@ -39,6 +39,51 @@ function addBookToLibrary(e) {
   myLibrary.push(newBook);
   bookForm.reset();
   modalContainer.style.display = "none";
+  displayBook();
+}
+
+function displayBook() {
+  const readingList = document.querySelector(".list-reading");
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].status === "reading") {
+      readingList.appendChild(createBookStructure(myLibrary[i]));
+      console.log("success");
+    }
+  }
+}
+
+function createBookStructure(item) {
+  const card = document.createElement("div");
+  card.className = "card";
+  const cardCover = document.createElement("img");
+  cardCover.src = item.coverImg;
+  cardCover.className = "cover";
+  card.appendChild(cardCover);
+  const content = document.createElement("div");
+  content.className = "content";
+  card.appendChild(content);
+  const bookInfo = document.createElement("div");
+  bookInfo.className = "book-info";
+  content.appendChild(bookInfo);
+  const bookTitle = document.createElement("p");
+  bookTitle.textContent = item.title;
+  bookTitle.className = "title";
+  bookInfo.appendChild(bookTitle);
+  const bookAuthor = document.createElement("p");
+  bookAuthor.className = "author";
+  bookAuthor.textContent = item.author;
+  bookInfo.appendChild(bookAuthor);
+  const userProgress = document.createElement("div");
+  userProgress.className = "user-progress-data";
+  content.appendChild(userProgress);
+  const progress = document.createElement("p");
+  progress.textContent = item.chapterProgress;
+  userProgress.appendChild(progress);
+  const userScore = document.createElement("p");
+  userScore.textContent = item.score;
+  userProgress.appendChild(userScore);
+  return card;
 }
 
 function openModal() {
