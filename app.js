@@ -48,14 +48,14 @@ function displayBook() {
     const cardExist = document.querySelector(`[data-id="${index}"]`);
 
     if (!cardExist) {
-      const card = createBookStructure(book);
+      const card = generateCard(book);
       card.dataset.id = index;
       statusSection.appendChild(card);
     }
   });
 }
 
-function createBookStructure(item) {
+function generateCard(item) {
   const card = document.createElement("div");
   card.className = "card";
   const cardCover = document.createElement("img");
