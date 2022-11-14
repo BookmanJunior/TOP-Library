@@ -63,10 +63,12 @@ function generateCard(item) {
   actionBtns.className = "actions";
   card.appendChild(actionBtns);
   const editBtn = document.createElement("div");
+  editBtn.id = "editBtn";
   editBtn.className = "edit-btn action-btn";
   editBtn.style.backgroundImage = 'url("images/icons/edit.svg")';
   actionBtns.appendChild(editBtn);
   const deleteBtn = document.createElement("div");
+  deleteBtn.id = "deleteBtn";
   deleteBtn.className = "delete-btn action-btn";
   deleteBtn.style.backgroundImage = 'url("images/icons/bin.svg")';
   actionBtns.appendChild(deleteBtn);
