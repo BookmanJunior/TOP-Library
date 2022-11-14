@@ -175,23 +175,20 @@ h1 {
   opacity: 1;
 }
 
-.action-btn:active {
-  transform: scale(0.9);
-}
-
 .delete-btn {
   margin-top: 5px;
   background-color: var(--color-deep-blush);
 }
 
-.delete-btn svg {
-  stroke: var(--color-foreground);
+.edit-btn,
+.delete-btn {
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.edit-btn svg,
-.delete-btn svg {
-  height: 70%;
-  pointer-events: none;
+.action-btn:active {
+  transform: scale(0.9);
 }
 
 .delete-btn:hover {
