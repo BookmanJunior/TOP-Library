@@ -43,12 +43,16 @@ function addBookToLibrary(e) {
 }
 
 function displayBook() {
-  for (let i = 0; i < myLibrary.length; i++) {
-    const statusSection = document.querySelector(
-      `.list-${myLibrary[i].status}`
-    );
-    statusSection.appendChild(createBookStructure(myLibrary[i]));
-  }
+  myLibrary.forEach((book, index) => {
+    const statusSection = document.querySelector(`.list-${book.status}`);
+    const cardExist = document.querySelector(`[data-id="${index}"]`);
+
+    if (!cardExist) {
+      const card = createBookStructure(book);
+      card.dataset.id = index;
+      statusSection.appendChild(card);
+    }
+  });
 }
 
 function createBookStructure(item) {
