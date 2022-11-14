@@ -59,6 +59,17 @@ function generateCard(item) {
   const card = document.createElement("div");
   card.className = "card";
   const cardCover = document.createElement("img");
+  const actionBtns = document.createElement("div");
+  actionBtns.className = "actions";
+  card.appendChild(actionBtns);
+  const editBtn = document.createElement("div");
+  editBtn.className = "edit-btn action-btn";
+  editBtn.style.backgroundImage = 'url("images/icons/edit.svg")';
+  actionBtns.appendChild(editBtn);
+  const deleteBtn = document.createElement("div");
+  deleteBtn.className = "delete-btn action-btn";
+  deleteBtn.style.backgroundImage = 'url("images/icons/bin.svg")';
+  actionBtns.appendChild(deleteBtn);
   cardCover.src = item.coverImg;
   cardCover.className = "cover";
   card.appendChild(cardCover);
