@@ -1,13 +1,24 @@
-let myLibrary = [];
+let myLibrary = [
+  {
+    title: "Don Quixote",
+    author: "Miguel de Cervantes",
+    coverImg: "https://m.media-amazon.com/images/I/51iQq6ZYedL.jpg",
+    status: "planning",
+    chapterProgress: "0 / 1077",
+  },
+];
 
 const addBtn = document.querySelector(".add-btn");
 const modalContainer = document.querySelector(".modal-container");
 const bookForm = document.querySelector("form");
 const bookData = Array.from(bookForm.elements);
+const mainContent = document.querySelector(".main-content");
 
 addBtn.addEventListener("click", openModal);
 modalContainer.addEventListener("click", closeModal);
 bookForm.addEventListener("submit", addBookToLibrary);
+window.addEventListener("load", displayBook);
+mainContent.addEventListener("click", modifyCard);
 
 function Book(
   title = bookData[1].value,
@@ -110,6 +121,7 @@ function closeModal(e) {
     e.target.className === "exit-btn" ||
     e.target.className === "modal-container"
   ) {
+    bookForm.reset();
     modalContainer.style.display = "none";
   }
 }
