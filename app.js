@@ -4,7 +4,7 @@ let myLibrary = [
     author: "Miguel de Cervantes",
     coverLink: "https://m.media-amazon.com/images/I/51iQq6ZYedL.jpg",
     status: "planning",
-    chapterProgress: "0 / 1077",
+    chapterCount: "1077",
   },
 ];
 
@@ -66,6 +66,20 @@ function displayBook() {
       statusSection.appendChild(card);
     }
   });
+}
+
+function getCurrentCard(e) {
+  let card = {};
+
+  if (e.target.id === "deleteBtn" || e.target.id === "editBtn") {
+    const currentCard = e.target.closest(".card");
+    const currentCardIndex = parseInt(currentCard.getAttribute("data-id"));
+
+    return (card = {
+      currentCard,
+      currentCardIndex,
+    });
+  }
 }
 
 function generateCard(item) {
