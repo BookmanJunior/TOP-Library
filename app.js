@@ -13,6 +13,8 @@ const modalContainer = document.querySelector(".modal-container");
 const bookForm = document.querySelector("form");
 const bookData = Array.from(bookForm.elements);
 const mainContent = document.querySelector(".main-content");
+const modalCover = document.querySelector(".modal-header .modal-cover");
+const modalTitle = document.querySelector(".modal-header .title");
 
 addBtn.addEventListener("click", openModal);
 modalContainer.addEventListener("click", closeModal);
@@ -121,6 +123,8 @@ function closeModal(e) {
     e.target.className === "exit-btn" ||
     e.target.className === "modal-container"
   ) {
+    modalCover.src = "";
+    modalTitle.textContent = "";
     bookForm.reset();
     modalContainer.style.display = "none";
   }
