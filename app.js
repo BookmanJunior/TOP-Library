@@ -2,7 +2,7 @@ let myLibrary = [
   {
     title: "Don Quixote",
     author: "Miguel de Cervantes",
-    coverImg: "https://m.media-amazon.com/images/I/51iQq6ZYedL.jpg",
+    coverLink: "https://m.media-amazon.com/images/I/51iQq6ZYedL.jpg",
     status: "planning",
     chapterProgress: "0 / 1077",
   },
@@ -25,7 +25,7 @@ mainContent.addEventListener("click", modifyCard);
 function Book(
   title = bookData[1].value,
   author = bookData[2].value,
-  coverImg = bookData[3].value,
+  coverLink = bookData[3].value,
   readStatus = bookData[4].value,
   score = bookData[5].value,
   chapterCount = bookData[6].value,
@@ -36,7 +36,7 @@ function Book(
 ) {
   this.title = title;
   this.author = author;
-  this.coverImg = coverImg;
+  this.coverLink = coverLink;
   this.status = readStatus;
   this.score = score;
   this.chapterCount = chapterCount;
@@ -85,7 +85,7 @@ function generateCard(item) {
   deleteBtn.className = "delete-btn action-btn";
   deleteBtn.style.backgroundImage = 'url("images/icons/bin.svg")';
   actionBtns.appendChild(deleteBtn);
-  cardCover.src = item.coverImg;
+  cardCover.src = item.coverLink;
   cardCover.className = "cover";
   card.appendChild(cardCover);
   const content = document.createElement("div");
