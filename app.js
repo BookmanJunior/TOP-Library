@@ -107,6 +107,31 @@ function getCurrentCard(e) {
   }
 }
 
+function modifyCard(e) {
+  console.log(e.target.type);
+  const card = getCurrentCard(e);
+  const currentCard = myLibrary[card.id];
+
+  if (e.target.id === "deleteBtn") {
+    card.container.remove();
+    myLibrary.splice(currentCard, 1);
+  }
+
+  if (e.target.id === "editBtn") {
+    modalCover.src = currentCard.coverLink;
+    modalTitle.textContent = currentCard.title;
+    openModal();
+    bookForm[1].value = currentCard.title;
+
+    for (item of bookForm) {
+      if (item.type === "submit") {
+        continue;
+      }
+      item.value = currentCard[item.id];
+    }
+  }
+}
+
 function generateCard(item) {
   const card = document.createElement("div");
   card.className = "card";
