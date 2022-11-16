@@ -41,7 +41,6 @@ let myLibrary = [
 const addBtn = document.querySelector(".add-btn");
 const modalContainer = document.querySelector(".modal-container");
 const bookForm = document.querySelector("form");
-const bookData = Array.from(bookForm.elements);
 const mainContent = document.querySelector(".main-content");
 const modalCover = document.querySelector(".modal-header .modal-cover");
 const modalTitle = document.querySelector(".modal-header .title");
@@ -53,16 +52,16 @@ window.addEventListener("load", displayBook);
 mainContent.addEventListener("click", modifyCard);
 
 function Book(
-  title = bookData[1].value,
-  author = bookData[2].value,
-  coverLink = bookData[3].value,
-  readStatus = bookData[4].value,
-  score = bookData[5].value,
-  chapterCount = bookData[6].value,
-  chapterProgress = bookData[7].value,
-  startDate = bookData[8].value,
-  finishDate = bookData[9].value,
-  notes = bookData[10].value
+  title = bookForm[1].value,
+  author = bookForm[2].value,
+  coverLink = bookForm[3].value,
+  readStatus = bookForm[4].value,
+  score = bookForm[5].value,
+  chapterCount = bookForm[6].value,
+  chapterProgress = bookForm[7].value,
+  startDate = bookForm[8].value,
+  finishDate = bookForm[9].value,
+  notes = bookForm[10].value
 ) {
   this.title = title;
   this.author = author;
