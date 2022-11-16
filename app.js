@@ -11,6 +11,31 @@ let myLibrary = [
     finishDate: "",
     notes: "",
   },
+  {
+    title: "Northanger Abbey",
+    author: "Jane Austen",
+    coverLink: "https://m.media-amazon.com/images/I/51-k8A19NQL.jpg",
+    status: "completed",
+    score: "9",
+    chapterCount: "320",
+    chapterProgress: "320",
+    startDate: "",
+    finishDate: "",
+    notes: "",
+  },
+  {
+    title: "Berserk",
+    author: "Kentaro Miura",
+    coverLink:
+      "https://kbimages1-a.akamaihd.net/b7ccda5d-c44e-4041-a1d4-382e69c641a1/1200/1200/False/berserk-volume-1.jpg",
+    status: "reading",
+    score: "10",
+    chapterCount: "",
+    chapterProgress: "370",
+    startDate: "",
+    finishDate: "",
+    notes: "",
+  },
 ];
 
 const addBtn = document.querySelector(".add-btn");
@@ -74,9 +99,11 @@ function displayBook() {
 }
 
 function getCurrentCard(e) {
+  let card = {};
   if (e.target.id === "deleteBtn" || e.target.id === "editBtn") {
-    const currentCardId = e.target.closest(".card").getAttribute("data-id");
-    return parseInt(currentCardId);
+    const container = e.target.closest(".card");
+    const id = container.getAttribute("data-id");
+    return (card = { container, id });
   }
 }
 
