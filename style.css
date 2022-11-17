@@ -212,7 +212,7 @@ h1 {
 
 .modal {
   width: min(1000px, 90%);
-  height: 70%;
+  height: min(640px, 90%);
   background-color: var(--color-foreground);
   border-radius: var(--main-border-radius);
   overflow: auto;
@@ -222,7 +222,7 @@ h1 {
 .modal-header {
   display: grid;
   background-color: var(--color-header-background);
-  padding: 1em;
+  gap: 10px;
 }
 
 .exit-btn {
@@ -232,6 +232,7 @@ h1 {
   grid-column: 2;
   grid-row: 1;
   place-self: start end;
+  margin-right: 10px;
 }
 
 .exit-btn:hover {
@@ -242,7 +243,8 @@ h1 {
   display: flex;
   align-items: end;
   gap: 1.5em;
-  padding-left: 32px;
+  padding-left: 3.125em;
+  padding-bottom: 1em;
 }
 
 .modal-cover-container {
@@ -271,11 +273,13 @@ h1 {
   grid-row: 1;
   place-self: end;
   cursor: pointer;
+  margin-bottom: 1em;
+  margin-right: 3em;
 }
 
 .modal-body {
-  padding: 50px;
-  padding-top: 70px;
+  padding: 3.125em;
+  padding-top: 4.375em;
 }
 
 /* Form style */
