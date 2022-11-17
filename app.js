@@ -53,6 +53,9 @@ modalContainer.addEventListener("click", closeModal);
 bookForm.addEventListener("submit", addBookToLibrary);
 window.addEventListener("load", displayBook);
 mainContent.addEventListener("click", modifyCard);
+bookForm.title.addEventListener("keyup", function () {
+  modalTitle.textContent = this.value;
+});
 
 function Book(
   title = bookForm[1].value,
