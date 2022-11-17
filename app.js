@@ -102,32 +102,32 @@ function getCurrentCard(e) {
   let card = {};
   if (e.target.id === "deleteBtn" || e.target.id === "editBtn") {
     const container = e.target.closest(".card");
-    const id = container.getAttribute("data-id");
-    return (card = { container, id });
+    const cardId = container.getAttribute("data-id");
+    const object = myLibrary.filter((book) => book.id === cardId);
+    const index = myLibrary.findIndex((book) => book.id === cardId);
+    return (card = { container, object, index });
   }
 }
 
 function modifyCard(e) {
-  console.log(e.target.type);
-  const card = getCurrentCard(e);
-  const currentCard = myLibrary[card.id];
+  const currentCard = getCurrentCard(e);
 
   if (e.target.id === "deleteBtn") {
-    card.container.remove();
-    myLibrary.splice(currentCard, 1);
+    currentCard.container.remove();
+    myLibrary.splice(currentCard.index, 1);
   }
 
   if (e.target.id === "editBtn") {
-    modalCover.src = currentCard.coverLink;
-    modalTitle.textContent = currentCard.title;
     openModal();
-    bookForm[1].value = currentCard.title;
+
+    modalCover.src = currentCard.object[0].coverLink;
+    modalTitle.textContent = currentCard.object[0].title;
 
     for (item of bookForm) {
       if (item.type === "submit") {
         continue;
       }
-      item.value = currentCard[item.id];
+      item.value = currentCard.object[0][item.id];
     }
   }
 }
