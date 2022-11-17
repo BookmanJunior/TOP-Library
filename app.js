@@ -85,13 +85,14 @@ function addBookToLibrary(e) {
 }
 
 function displayBook() {
-  myLibrary.forEach((book, index) => {
+  myLibrary.forEach((book) => {
     const statusSection = document.querySelector(`.list-${book.status}`);
-    const cardExist = document.querySelector(`[data-id="${index}"]`);
+    const cardExist = document.querySelector(`[data-id="${book.id}"]`);
 
     if (!cardExist) {
       const card = generateCard(book);
-      card.dataset.id = index;
+      book.id = generateUniqueId();
+      card.setAttribute("data-id", book.id);
       statusSection.appendChild(card);
     }
   });
@@ -175,6 +176,10 @@ function generateCard(item) {
   userScore.textContent = item.score;
   userProgress.appendChild(userScore);
   return card;
+}
+
+function generateUniqueId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2);
 }
 
 function openModal() {
