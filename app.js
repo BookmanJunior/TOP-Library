@@ -105,6 +105,7 @@ function getCurrentCard(e) {
     const cardId = container.getAttribute("data-id");
     const object = myLibrary.filter((book) => book.id === cardId);
     const index = myLibrary.findIndex((book) => book.id === cardId);
+
     return (card = { container, object, index });
   }
 }
