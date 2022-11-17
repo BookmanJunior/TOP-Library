@@ -10,6 +10,7 @@ let myLibrary = [
     startDate: "",
     finishDate: "",
     notes: "",
+    id: "lal16xvp3c5srwnr0w2",
   },
   {
     title: "Northanger Abbey",
@@ -22,6 +23,7 @@ let myLibrary = [
     startDate: "",
     finishDate: "",
     notes: "",
+    id: "lal17knp65ybhrxtp37",
   },
   {
     title: "Berserk",
@@ -35,6 +37,7 @@ let myLibrary = [
     startDate: "",
     finishDate: "",
     notes: "",
+    id: "lal186jhvlhs2gh1m7b",
   },
 ];
 
@@ -61,7 +64,8 @@ function Book(
   chapterProgress = bookForm[7].value,
   startDate = bookForm[8].value,
   finishDate = bookForm[9].value,
-  notes = bookForm[10].value
+  notes = bookForm[10].value,
+  id = generateUniqueId()
 ) {
   this.title = title;
   this.author = author;
@@ -73,6 +77,7 @@ function Book(
   this.startDate = startDate;
   this.finishDate = finishDate;
   this.notes = notes;
+  this.id = id;
 }
 
 function addBookToLibrary(e) {
@@ -91,7 +96,6 @@ function displayBook() {
 
     if (!cardExist) {
       const card = generateCard(book);
-      book.id = generateUniqueId();
       card.setAttribute("data-id", book.id);
       statusSection.appendChild(card);
     }
