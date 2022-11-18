@@ -56,6 +56,9 @@ mainContent.addEventListener("click", modifyCard);
 bookForm.title.addEventListener("keyup", function () {
   modalTitle.textContent = this.value;
 });
+bookForm.coverLink.addEventListener("change", function () {
+  modalCover.src = this.value;
+});
 
 function Book(
   title,
