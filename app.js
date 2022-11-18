@@ -58,17 +58,17 @@ bookForm.title.addEventListener("keyup", function () {
 });
 
 function Book(
-  title = bookForm[1].value,
-  author = bookForm[2].value,
-  coverLink = bookForm[3].value,
-  readStatus = bookForm[4].value,
-  score = bookForm[5].value,
-  chapterCount = bookForm[6].value,
-  chapterProgress = bookForm[7].value,
-  startDate = bookForm[8].value,
-  finishDate = bookForm[9].value,
-  notes = bookForm[10].value,
-  id = generateUniqueId()
+  title,
+  author,
+  coverLink,
+  readStatus,
+  score,
+  chapterCount,
+  chapterProgress,
+  startDate,
+  finishDate,
+  notes,
+  id
 ) {
   this.title = title;
   this.author = author;
@@ -85,7 +85,20 @@ function Book(
 
 function addBookToLibrary(e) {
   e.preventDefault();
-  const newBook = new Book();
+  const newBook = new Book(
+    (title = bookForm[1].value),
+    (author = bookForm[2].value),
+    (coverLink = bookForm[3].value),
+    (readStatus = bookForm[4].value),
+    (score = bookForm[5].value),
+    (chapterCount = bookForm[6].value),
+    (chapterProgress = bookForm[7].value),
+    (startDate = bookForm[8].value),
+    (finishDate = bookForm[9].value),
+    (notes = bookForm[10].value),
+    (id = generateUniqueId())
+  );
+
   myLibrary.push(newBook);
   bookForm.reset();
   modalContainer.style.display = "none";
