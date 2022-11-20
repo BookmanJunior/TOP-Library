@@ -212,7 +212,7 @@ h1 {
 
 .modal {
   width: min(1000px, 90%);
-  height: min(640px, 90%);
+  height: min(650px, 90%);
   background-color: var(--color-foreground);
   border-radius: var(--main-border-radius);
   overflow: auto;
