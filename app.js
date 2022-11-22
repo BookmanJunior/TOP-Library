@@ -126,10 +126,9 @@ function getCurrentCard(e) {
   if (e.target.id === "deleteBtn" || e.target.id === "editBtn") {
     const container = e.target.closest(".card");
     const cardId = container.getAttribute("data-id");
-    const object = myLibrary.filter((book) => book.id === cardId);
     const index = myLibrary.findIndex((book) => book.id === cardId);
 
-    return (card = { container, object, index });
+    return (card = { container, index });
   }
 }
 
@@ -144,14 +143,14 @@ function modifyCard(e) {
   if (e.target.id === "editBtn") {
     openModal();
 
-    modalCover.src = currentCard.object[0].coverLink;
-    modalTitle.textContent = currentCard.object[0].title;
+    modalCover.src = myLibrary[currentCard.index].coverLink;
+    modalTitle.textContent = myLibrary[currentCard.index].title;
 
     for (item of bookForm) {
       if (item.type === "submit") {
         continue;
       }
-      item.value = currentCard.object[0][item.id];
+      item.value = myLibrary[currentCard.index][item.id];
     }
   }
 }
