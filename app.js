@@ -51,7 +51,8 @@ const modalTitle = document.querySelector(".modal-header .title");
 addBtn.addEventListener("click", addBookModal);
 modalContainer.addEventListener("click", closeModal);
 window.addEventListener("load", displayBook);
-mainContent.addEventListener("click", modifyCard);
+mainContent.addEventListener("click", deleteCard);
+mainContent.addEventListener("click", editCard);
 bookForm.title.addEventListener("keyup", function () {
   modalTitle.textContent = this.value;
 });
@@ -131,13 +132,17 @@ function getCurrentCard(e) {
   }
 }
 
-function modifyCard(e) {
+function deleteCard(e) {
   const currentCard = getCurrentCard(e);
 
   if (e.target.id === "deleteBtn") {
     currentCard.container.remove();
     myLibrary.splice(currentCard.index, 1);
   }
+}
+
+function editCard(e) {
+  const currentCard = getCurrentCard(e);
 
   if (e.target.id === "editBtn") {
     openModal();
@@ -146,10 +151,9 @@ function modifyCard(e) {
     modalTitle.textContent = myLibrary[currentCard.index].title;
 
     for (item of bookForm) {
-      if (item.type === "submit") {
-        continue;
+      if (item.type !== "submit") {
+        item.value = myLibrary[currentCard.index][item.id];
       }
-      item.value = myLibrary[currentCard.index][item.id];
     }
   }
 }
@@ -226,9 +230,6 @@ function closeModal(e) {
     e.target.className === "exit-btn" ||
     e.target.className === "modal-container"
   ) {
-    modalCover.src = "";
-    modalTitle.textContent = "";
-    bookForm.reset();
     modalContainer.style.display = "none";
   }
 }
