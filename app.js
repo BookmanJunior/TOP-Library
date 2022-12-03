@@ -48,9 +48,8 @@ const mainContent = document.querySelector(".main-content");
 const modalCover = document.querySelector(".modal-header .modal-cover");
 const modalTitle = document.querySelector(".modal-header .title");
 
-addBtn.addEventListener("click", openModal);
+addBtn.addEventListener("click", addBookModal);
 modalContainer.addEventListener("click", closeModal);
-bookForm.addEventListener("submit", addBookToLibrary);
 window.addEventListener("load", displayBook);
 mainContent.addEventListener("click", modifyCard);
 bookForm.title.addEventListener("keyup", function () {
@@ -212,6 +211,14 @@ function generateUniqueId() {
 
 function openModal() {
   modalContainer.style.display = "flex";
+}
+
+function addBookModal() {
+  bookForm.addEventListener("submit", addBookToLibrary);
+  bookForm.reset();
+  modalContainer.style.display = "flex";
+  modalCover.src = "images/icons/defaultImg.jpg";
+  modalTitle.textContent = "[Title]";
 }
 
 function closeModal(e) {
