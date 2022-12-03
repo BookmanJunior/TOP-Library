@@ -225,6 +225,7 @@ function openModal() {
 }
 
 function addBookModal() {
+  bookForm.removeEventListener("submit", saveEdit);
   bookForm.addEventListener("submit", addBookToLibrary);
   bookForm.reset();
   openModal();
