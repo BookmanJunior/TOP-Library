@@ -91,7 +91,7 @@ function addBookToLibrary(e) {
   const newBook = new Book(
     (title = bookForm[1].value),
     (author = bookForm[2].value),
-    (coverLink = bookForm[3].value),
+    (coverLink = bookForm[3].value || "images/icons/defaultImg.jpg"),
     (readStatus = bookForm[4].value),
     (score = bookForm[5].value),
     (chapterCount = bookForm[6].value),
