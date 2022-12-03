@@ -41,6 +41,7 @@ let myLibrary = [
   },
 ];
 
+let currentCard = {};
 const addBtn = document.querySelector(".add-btn");
 const modalContainer = document.querySelector(".modal-container");
 const bookForm = document.querySelector("form");
@@ -51,6 +52,7 @@ const modalTitle = document.querySelector(".modal-header .title");
 addBtn.addEventListener("click", addBookModal);
 modalContainer.addEventListener("click", closeModal);
 window.addEventListener("load", displayBook);
+mainContent.addEventListener("click", getCurrentCard);
 mainContent.addEventListener("click", deleteCard);
 mainContent.addEventListener("click", editCard);
 bookForm.title.addEventListener("keyup", function () {
@@ -121,20 +123,24 @@ function displayBook() {
   });
 }
 
+function saveEdit(e) {
+  e.preventDefault();
+  for (item of bookForm) {
+    myLibrary[currentCard.index][item.id] = item.value;
+  }
+  modalContainer.style.display = "none";
+}
+
 function getCurrentCard(e) {
-  let card = {};
   if (e.target.id === "deleteBtn" || e.target.id === "editBtn") {
     const container = e.target.closest(".card");
     const cardId = container.getAttribute("data-id");
     const index = myLibrary.findIndex((book) => book.id === cardId);
-
-    return (card = { container, index });
+    currentCard = { container, cardId, index };
   }
 }
 
 function deleteCard(e) {
-  const currentCard = getCurrentCard(e);
-
   if (e.target.id === "deleteBtn") {
     currentCard.container.remove();
     myLibrary.splice(currentCard.index, 1);
@@ -142,9 +148,8 @@ function deleteCard(e) {
 }
 
 function editCard(e) {
-  const currentCard = getCurrentCard(e);
-
   if (e.target.id === "editBtn") {
+    bookForm.removeEventListener("submit", addBookToLibrary);
     openModal();
 
     modalCover.src = myLibrary[currentCard.index].coverLink;
@@ -155,6 +160,8 @@ function editCard(e) {
         item.value = myLibrary[currentCard.index][item.id];
       }
     }
+
+    bookForm.addEventListener("submit", saveEdit);
   }
 }
 
@@ -220,7 +227,7 @@ function openModal() {
 function addBookModal() {
   bookForm.addEventListener("submit", addBookToLibrary);
   bookForm.reset();
-  modalContainer.style.display = "flex";
+  openModal();
   modalCover.src = "images/icons/defaultImg.jpg";
   modalTitle.textContent = "[Title]";
 }
