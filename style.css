@@ -319,6 +319,16 @@ textarea {
   padding: 8px 15px;
 }
 
+/* Utilities */
+.increment-btn {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.card:hover .increment-btn {
+  opacity: 1;
+}
+
 /* Animations */
 
 @keyframes modalOpen {
