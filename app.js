@@ -55,6 +55,7 @@ window.addEventListener("load", displayBook);
 mainContent.addEventListener("click", getCurrentCard);
 mainContent.addEventListener("click", deleteCard);
 mainContent.addEventListener("click", editCard);
+mainContent.addEventListener("click", incrementChapterProgress);
 bookForm.title.addEventListener("keyup", function () {
   modalTitle.textContent = this.value;
 });
@@ -152,7 +153,11 @@ function updateDom() {
 }
 
 function getCurrentCard(e) {
-  if (e.target.matches(".delete-btn") || e.target.matches(".edit-btn")) {
+  if (
+    e.target.matches(".delete-btn") ||
+    e.target.matches(".edit-btn") ||
+    e.target.matches(".increment-btn")
+  ) {
     const container = e.target.closest(".card");
     const cardId = container.getAttribute("data-id");
     const index = myLibrary.findIndex((book) => book.id === cardId);
@@ -181,6 +186,16 @@ function editCard(e) {
         item.value = myLibrary[currentCard.index][item.id];
       }
     }
+  }
+}
+
+function incrementChapterProgress(e) {
+  if (e.target.matches(".increment-btn")) {
+    myLibrary[currentCard.index].chapterProgress++;
+    generateIncrementBtn(
+      myLibrary[currentCard.index].chapterProgress,
+      currentCard.container.querySelector(".chapter-progress")
+    );
   }
 }
 
