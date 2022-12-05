@@ -134,6 +134,8 @@ function saveEdit(e) {
 function updateDom() {
   const bookStatus = myLibrary[currentCard.index].status;
   const domSectionStatus = document.querySelector(`.list-${bookStatus}`);
+  let domChapterProgress =
+    currentCard.container.querySelector(".chapter-progress");
   const { title, author, status, chapterCount, chapterProgress, score } =
     myLibrary[currentCard.index];
 
@@ -143,13 +145,10 @@ function updateDom() {
 
   currentCard.container.querySelector(".title").textContent = title;
   currentCard.container.querySelector(".author").textContent = author;
-  status === "reading"
-    ? (currentCard.container.querySelector(".chapter-progress").textContent =
-        chapterProgress)
-    : (currentCard.container.querySelector(
-        ".chapter-progress"
-      ).textContent = `${chapterProgress}/${chapterCount}`);
   currentCard.container.querySelector(".score").textContent = score;
+  status === "reading"
+    ? generateIncrementBtn(chapterProgress, domChapterProgress)
+    : (domChapterProgress.textContent = `${chapterProgress}/${chapterCount}`);
 }
 
 function getCurrentCard(e) {
@@ -229,7 +228,7 @@ function generateCard(item) {
   chapterProgress.className = "chapter-progress";
   chapterProgress.textContent = item.chapterProgress;
   item.status === "reading"
-    ? (chapterProgress.textContent = `${item.chapterProgress}`)
+    ? generateIncrementBtn(item.chapterProgress, chapterProgress)
     : (chapterProgress.textContent = `${item.chapterProgress}/${item.chapterCount}`);
   userProgress.appendChild(chapterProgress);
   const userScore = document.createElement("p");
@@ -237,6 +236,14 @@ function generateCard(item) {
   userScore.textContent = item.score;
   userProgress.appendChild(userScore);
   return card;
+}
+
+function generateIncrementBtn(item, element) {
+  element.textContent = `${item}`;
+  const incrementBtn = document.createElement("span");
+  incrementBtn.textContent = "+";
+  incrementBtn.className = "increment-btn";
+  element.appendChild(incrementBtn);
 }
 
 function generateUniqueId() {
