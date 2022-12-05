@@ -323,6 +323,7 @@ textarea {
 .increment-btn {
   opacity: 0;
   cursor: pointer;
+  user-select: none;
 }
 
 .card:hover .increment-btn {
