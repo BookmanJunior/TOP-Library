@@ -129,6 +129,24 @@ function saveEdit(e) {
     myLibrary[currentCard.index][item.id] = item.value;
   }
   modalContainer.style.display = "none";
+  updateDom();
+}
+
+function updateDom() {
+  const bookStatus = myLibrary[currentCard.index].status;
+  const domSectionStatus = document.querySelector(`.list-${bookStatus}`);
+  const { title, author, chapterProgress, score } =
+    myLibrary[currentCard.index];
+
+  if (bookStatus !== domSectionStatus) {
+    domSectionStatus.appendChild(currentCard.container);
+  }
+
+  currentCard.container.querySelector(".title").textContent = title;
+  currentCard.container.querySelector(".author").textContent = author;
+  currentCard.container.querySelector(".chapter-progress").textContent =
+    chapterProgress;
+  currentCard.container.querySelector(".score").textContent = score;
 }
 
 function getCurrentCard(e) {
@@ -150,6 +168,7 @@ function deleteCard(e) {
 function editCard(e) {
   if (e.target.matches(".edit-btn")) {
     bookForm.removeEventListener("submit", addBookToLibrary);
+    bookForm.addEventListener("submit", saveEdit);
     openModal();
 
     modalCover.src = myLibrary[currentCard.index].coverLink;
@@ -160,8 +179,6 @@ function editCard(e) {
         item.value = myLibrary[currentCard.index][item.id];
       }
     }
-
-    bookForm.addEventListener("submit", saveEdit);
   }
 }
 
