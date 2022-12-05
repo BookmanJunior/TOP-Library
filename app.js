@@ -132,7 +132,7 @@ function saveEdit(e) {
 }
 
 function getCurrentCard(e) {
-  if (e.target.id === "deleteBtn" || e.target.id === "editBtn") {
+  if (e.target.matches(".delete-btn") || e.target.matches(".edit-btn")) {
     const container = e.target.closest(".card");
     const cardId = container.getAttribute("data-id");
     const index = myLibrary.findIndex((book) => book.id === cardId);
@@ -141,14 +141,14 @@ function getCurrentCard(e) {
 }
 
 function deleteCard(e) {
-  if (e.target.id === "deleteBtn") {
+  if (e.target.matches(".delete-btn")) {
     currentCard.container.remove();
     myLibrary.splice(currentCard.index, 1);
   }
 }
 
 function editCard(e) {
-  if (e.target.id === "editBtn") {
+  if (e.target.matches(".edit-btn")) {
     bookForm.removeEventListener("submit", addBookToLibrary);
     openModal();
 
@@ -174,13 +174,11 @@ function generateCard(item) {
   card.appendChild(actionBtns);
 
   const editBtn = document.createElement("div");
-  editBtn.id = "editBtn";
   editBtn.className = "edit-btn action-btn";
   editBtn.style.backgroundImage = 'url("images/icons/edit.svg")';
   actionBtns.appendChild(editBtn);
 
   const deleteBtn = document.createElement("div");
-  deleteBtn.id = "deleteBtn";
   deleteBtn.className = "delete-btn action-btn";
   deleteBtn.style.backgroundImage = 'url("images/icons/bin.svg")';
   actionBtns.appendChild(deleteBtn);
