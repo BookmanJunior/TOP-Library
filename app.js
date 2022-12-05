@@ -207,10 +207,12 @@ function generateCard(item) {
   const userProgress = document.createElement("div");
   userProgress.className = "user-progress-data";
   content.appendChild(userProgress);
-  const progress = document.createElement("p");
-  progress.textContent = item.chapterProgress;
-  userProgress.appendChild(progress);
+  const chapterProgress = document.createElement("p");
+  chapterProgress.className = "chapter-progress";
+  chapterProgress.textContent = item.chapterProgress;
+  userProgress.appendChild(chapterProgress);
   const userScore = document.createElement("p");
+  userScore.className = "score";
   userScore.textContent = item.score;
   userProgress.appendChild(userScore);
   return card;
