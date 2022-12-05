@@ -6,7 +6,7 @@ let myLibrary = [
     status: "planning",
     score: "",
     chapterCount: "1077",
-    chapterProgress: "",
+    chapterProgress: "0",
     startDate: "",
     finishDate: "",
     notes: "",
@@ -59,7 +59,7 @@ bookForm.title.addEventListener("keyup", function () {
   modalTitle.textContent = this.value;
 });
 bookForm.coverLink.addEventListener("change", function () {
-  modalCover.src = this.value;
+  modalCover.src = this.value || "images/icons/defaultImg.jpg";
 });
 
 function Book(
@@ -97,13 +97,12 @@ function addBookToLibrary(e) {
     (readStatus = bookForm[4].value),
     (score = bookForm[5].value),
     (chapterCount = bookForm[6].value),
-    (chapterProgress = bookForm[7].value),
+    (chapterProgress = bookForm[7].value || "0"),
     (startDate = bookForm[8].value),
     (finishDate = bookForm[9].value),
     (notes = bookForm[10].value),
     (id = generateUniqueId())
   );
-
   myLibrary.push(newBook);
   bookForm.reset();
   modalContainer.style.display = "none";
@@ -135,7 +134,7 @@ function saveEdit(e) {
 function updateDom() {
   const bookStatus = myLibrary[currentCard.index].status;
   const domSectionStatus = document.querySelector(`.list-${bookStatus}`);
-  const { title, author, chapterProgress, score } =
+  const { title, author, status, chapterCount, chapterProgress, score } =
     myLibrary[currentCard.index];
 
   if (bookStatus !== domSectionStatus) {
@@ -144,8 +143,12 @@ function updateDom() {
 
   currentCard.container.querySelector(".title").textContent = title;
   currentCard.container.querySelector(".author").textContent = author;
-  currentCard.container.querySelector(".chapter-progress").textContent =
-    chapterProgress;
+  status === "reading"
+    ? (currentCard.container.querySelector(".chapter-progress").textContent =
+        chapterProgress)
+    : (currentCard.container.querySelector(
+        ".chapter-progress"
+      ).textContent = `${chapterProgress}/${chapterCount}`);
   currentCard.container.querySelector(".score").textContent = score;
 }
 
@@ -225,6 +228,9 @@ function generateCard(item) {
   const chapterProgress = document.createElement("p");
   chapterProgress.className = "chapter-progress";
   chapterProgress.textContent = item.chapterProgress;
+  item.status === "reading"
+    ? (chapterProgress.textContent = `${item.chapterProgress}`)
+    : (chapterProgress.textContent = `${item.chapterProgress}/${item.chapterCount}`);
   userProgress.appendChild(chapterProgress);
   const userScore = document.createElement("p");
   userScore.className = "score";
