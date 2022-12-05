@@ -225,6 +225,7 @@ h1 {
 
 .modal-header {
   display: grid;
+  grid-template-columns: 1fr 1fr 5%;
   background-color: var(--color-header-background);
   gap: 10px;
 }
@@ -233,7 +234,7 @@ h1 {
   font-size: 1.5rem;
   cursor: pointer;
   margin-inline: 5px;
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1;
   place-self: start end;
   margin-right: 10px;
@@ -278,7 +279,6 @@ h1 {
   place-self: end;
   cursor: pointer;
   margin-bottom: 1em;
-  margin-right: 3em;
 }
 
 .modal-body {
