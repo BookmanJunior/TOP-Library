@@ -160,7 +160,10 @@ function updateDom() {
   currentCard.container.querySelector(".author").textContent = author;
   currentCard.container.querySelector(".score").textContent = score;
   currentCard.container.querySelector(".cover").src = coverLink || defaultImg;
-  myLibrary[currentCard.index].coverLink = defaultImg;
+
+  if (!myLibrary[currentCard.index].coverLink) {
+    myLibrary[currentCard.index].coverLink = defaultImg;
+  }
 
   status === "reading"
     ? generateIncrementBtn(chapterProgress, domChapterProgress)
