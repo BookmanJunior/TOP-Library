@@ -48,6 +48,7 @@ const bookForm = document.querySelector("form");
 const mainContent = document.querySelector(".main-content");
 const modalCover = document.querySelector(".modal-header .modal-cover");
 const modalTitle = document.querySelector(".modal-header .title");
+const customAlert = document.getElementById("customAlert");
 
 addBtn.addEventListener("click", addBookModal);
 modalContainer.addEventListener("click", closeModal);
@@ -108,6 +109,7 @@ function addBookToLibrary(e) {
   bookForm.reset();
   modalContainer.style.display = "none";
   displayBook();
+  displaySuccessMsg("Added", newBook.title);
 }
 
 function displayBook() {
@@ -130,6 +132,7 @@ function saveEdit(e) {
   }
   modalContainer.style.display = "none";
   updateDom();
+  displaySuccessMsg("Updated", myLibrary[currentCard.index].title);
 }
 
 function updateDom() {
@@ -278,6 +281,16 @@ function generateIncrementBtn(item, element) {
 
 function generateUniqueId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2);
+}
+
+function displaySuccessMsg(status, item) {
+  customAlert.classList.add("success-alert-animation");
+  customAlert.querySelector(".alert-msg").textContent = `${status} entry
+    ${item}`;
+  setTimeout(() => {
+    customAlert.classList.remove("success-alert-animation");
+    customAlert.classList.add("hide-alert-animation");
+  }, 1300);
 }
 
 function openModal() {
