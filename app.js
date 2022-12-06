@@ -109,7 +109,7 @@ function addBookToLibrary(e) {
   bookForm.reset();
   modalContainer.style.display = "none";
   displayBook();
-  displaySuccessMsg("Added", newBook.title);
+  displaySuccessMsg("added", newBook.title);
 }
 
 function displayBook() {
@@ -132,7 +132,7 @@ function saveEdit(e) {
   }
   modalContainer.style.display = "none";
   updateDom();
-  displaySuccessMsg("Updated", myLibrary[currentCard.index].title);
+  displaySuccessMsg("updated", myLibrary[currentCard.index].title);
 }
 
 function updateDom() {
@@ -285,8 +285,8 @@ function generateUniqueId() {
 
 function displaySuccessMsg(status, item) {
   customAlert.classList.add("success-alert-animation");
-  customAlert.querySelector(".alert-msg").textContent = `${status} entry
-    ${item}`;
+  customAlert.querySelector(".alert-msg").textContent = `${item} list entry
+    ${status}`;
   setTimeout(() => {
     customAlert.classList.remove("success-alert-animation");
     customAlert.classList.add("hide-alert-animation");
