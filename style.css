@@ -352,9 +352,8 @@ textarea {
   color: var(--color-section-title);
 }
 
-.success-alert-animation {
-  display: flex;
-  animation: alertAnimation 400ms ease-in-out;
+.play-animation {
+  animation: displayAlertAnimation 400ms ease-in-out;
 }
 
 /* Animations */
@@ -369,7 +368,7 @@ textarea {
   }
 }
 
-@keyframes alertAnimation {
+@keyframes displayAlertAnimation {
   from {
     opacity: 0;
     transform: translateY(-50px);
