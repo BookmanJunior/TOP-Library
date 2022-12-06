@@ -49,6 +49,8 @@ const mainContent = document.querySelector(".main-content");
 const modalCover = document.querySelector(".modal-header .modal-cover");
 const modalTitle = document.querySelector(".modal-header .title");
 const customAlert = document.getElementById("customAlert");
+const defaultImg =
+  "https://raw.githubusercontent.com/BookmanJunior/TOP-Library/main/images/icons/defaultImg.jpg";
 
 addBtn.addEventListener("click", addBookModal);
 modalContainer.addEventListener("click", closeModal);
@@ -95,7 +97,7 @@ function addBookToLibrary(e) {
   const newBook = new Book(
     (title = bookForm[1].value),
     (author = bookForm[2].value),
-    (coverLink = bookForm[3].value || "images/icons/defaultImg.jpg"),
+    (coverLink = bookForm[3].value || defaultImg),
     (readStatus = bookForm[4].value),
     (score = bookForm[5].value),
     (chapterCount = bookForm[6].value),
@@ -157,7 +159,8 @@ function updateDom() {
   currentCard.container.querySelector(".title").textContent = title;
   currentCard.container.querySelector(".author").textContent = author;
   currentCard.container.querySelector(".score").textContent = score;
-  currentCard.container.querySelector(".cover").src = coverLink;
+  currentCard.container.querySelector(".cover").src = coverLink || defaultImg;
+  myLibrary[currentCard.index].coverLink = defaultImg;
 
   status === "reading"
     ? generateIncrementBtn(chapterProgress, domChapterProgress)
@@ -304,7 +307,7 @@ function addBookModal() {
   bookForm.addEventListener("submit", addBookToLibrary);
   bookForm.reset();
   openModal();
-  modalCover.src = "images/icons/defaultImg.jpg";
+  modalCover.src = defaultImg;
   modalTitle.textContent = "[Title]";
 }
 
