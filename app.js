@@ -166,9 +166,15 @@ function getCurrentCard(e) {
 }
 
 function deleteCard(e) {
+  const prompt = `Do you want to remove ${
+    myLibrary[currentCard.index].title
+  } from the list?`;
+
   if (e.target.matches(".delete-btn")) {
-    currentCard.container.remove();
-    myLibrary.splice(currentCard.index, 1);
+    if (confirm(prompt)) {
+      currentCard.container.remove();
+      myLibrary.splice(currentCard.index, 1);
+    }
   }
 }
 
