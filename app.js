@@ -185,6 +185,7 @@ function deleteCard(e) {
   if (e.target.matches(".delete-btn")) {
     if (confirm(prompt)) {
       currentCard.container.remove();
+      displaySuccessMsg("deleted", myLibrary[currentCard.index].title);
       myLibrary.splice(currentCard.index, 1);
     }
   }
@@ -284,12 +285,13 @@ function generateUniqueId() {
 }
 
 function displaySuccessMsg(status, item) {
-  customAlert.classList.add("success-alert-animation");
+  customAlert.style.display = "flex";
+  customAlert.classList.add("play-animation");
   customAlert.querySelector(".alert-msg").textContent = `${item} list entry
     ${status}`;
   setTimeout(() => {
-    customAlert.classList.remove("success-alert-animation");
-    customAlert.classList.add("hide-alert-animation");
+    customAlert.classList.remove("play-animation");
+    customAlert.style.display = "none";
   }, 1300);
 }
 
