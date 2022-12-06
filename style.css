@@ -230,9 +230,7 @@ h1 {
   gap: 10px;
 }
 
-.exit-btn {
-  font-size: 1.5rem;
-  cursor: pointer;
+.modal-header .exit-btn {
   margin-inline: 5px;
   grid-column: 3;
   grid-row: 1;
@@ -240,7 +238,7 @@ h1 {
   margin-right: 10px;
 }
 
-.exit-btn:hover {
+.modal-header .exit-btn:hover {
   color: var(--color-blue);
 }
 
@@ -330,9 +328,48 @@ textarea {
   opacity: 1;
 }
 
+.exit-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.custom-alert-msg {
+  display: none;
+  position: fixed;
+  top: 5%;
+  left: 35%;
+  width: min(450px, 50%);
+  height: 50px;
+  background-color: #a8f0c6;
+  border-radius: var(--main-border-radius);
+  border-left: solid 5px #178344;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 10px;
+}
+
+.alert-msg {
+  color: var(--color-section-title);
+}
+
+.success-alert-animation {
+  display: flex;
+  animation: alertAnimation 400ms ease-in-out;
+}
+
 /* Animations */
 
 @keyframes modalOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes alertAnimation {
   from {
     opacity: 0;
     transform: translateY(-50px);
