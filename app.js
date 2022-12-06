@@ -137,8 +137,15 @@ function updateDom() {
   const domSectionStatus = document.querySelector(`.list-${bookStatus}`);
   let domChapterProgress =
     currentCard.container.querySelector(".chapter-progress");
-  const { title, author, status, chapterCount, chapterProgress, score } =
-    myLibrary[currentCard.index];
+  const {
+    title,
+    author,
+    coverLink,
+    status,
+    chapterCount,
+    chapterProgress,
+    score,
+  } = myLibrary[currentCard.index];
 
   if (bookStatus !== domSectionStatus) {
     domSectionStatus.appendChild(currentCard.container);
@@ -147,6 +154,8 @@ function updateDom() {
   currentCard.container.querySelector(".title").textContent = title;
   currentCard.container.querySelector(".author").textContent = author;
   currentCard.container.querySelector(".score").textContent = score;
+  currentCard.container.querySelector(".cover").src = coverLink;
+
   status === "reading"
     ? generateIncrementBtn(chapterProgress, domChapterProgress)
     : (domChapterProgress.textContent = `${chapterProgress}/${chapterCount}`);
