@@ -1,4 +1,4 @@
-let myLibrary = [
+const myLibrary = [
   {
     title: "Don Quixote",
     author: "Miguel de Cervantes",
@@ -66,30 +66,32 @@ bookForm.coverLink.addEventListener("change", function () {
   modalCover.src = this.value || "images/icons/defaultImg.jpg";
 });
 
-function Book(
-  title,
-  author,
-  coverLink,
-  readStatus,
-  score,
-  chapterCount,
-  chapterProgress,
-  startDate,
-  finishDate,
-  notes,
-  id
-) {
-  this.title = title;
-  this.author = author;
-  this.coverLink = coverLink;
-  this.status = readStatus;
-  this.score = score;
-  this.chapterCount = chapterCount;
-  this.chapterProgress = chapterProgress;
-  this.startDate = startDate;
-  this.finishDate = finishDate;
-  this.notes = notes;
-  this.id = id;
+class Book {
+  constructor(
+    title,
+    author,
+    coverLink,
+    readStatus,
+    score,
+    chapterCount,
+    chapterProgress,
+    startDate,
+    finishDate,
+    notes,
+    id
+  ) {
+    this.title = title;
+    this.author = author;
+    this.coverLink = coverLink;
+    this.status = readStatus;
+    this.score = score;
+    this.chapterCount = chapterCount;
+    this.chapterProgress = chapterProgress;
+    this.startDate = startDate;
+    this.finishDate = finishDate;
+    this.notes = notes;
+    this.id = id;
+  }
 }
 
 function addBookToLibrary(e) {
@@ -140,7 +142,7 @@ function saveEdit(e) {
 function updateDom() {
   const bookStatus = myLibrary[currentCard.index].status;
   const domSectionStatus = document.querySelector(`.list-${bookStatus}`);
-  let domChapterProgress =
+  const domChapterProgress =
     currentCard.container.querySelector(".chapter-progress");
   const {
     title,
