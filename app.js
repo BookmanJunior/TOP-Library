@@ -294,13 +294,14 @@ function generateUniqueId() {
 }
 
 function displaySuccessMsg(status, item) {
-  customAlert.style.display = "flex";
-  customAlert.classList.add("play-animation");
-  customAlert.querySelector(".alert-msg").textContent = `${item} list entry
-    ${status}`;
+  const notification = customNotification(`${item} list entry ${status}`);
+
+  notification.classList.add("active");
+
+  document.body.appendChild(notification);
+
   setTimeout(() => {
-    customAlert.classList.remove("play-animation");
-    customAlert.style.display = "none";
+    notification.remove();
   }, 1300);
 }
 
@@ -332,4 +333,19 @@ function closeModal(e) {
       { once: true }
     );
   }
+}
+
+function customNotification(msg) {
+  const notificationContainer = document.createElement("div");
+  const notificationMsg = document.createElement("p");
+
+  notificationMsg.textContent = msg;
+
+  notificationContainer.classList.add("custom-alert-msg");
+  notificationContainer.id = "customAlert";
+  notificationMsg.classList.add("alert-msg");
+
+  notificationContainer.appendChild(notificationMsg);
+
+  return notificationContainer;
 }
