@@ -190,11 +190,11 @@ function getCurrentCard(e) {
 }
 
 function deleteCard(e) {
-  const prompt = `Do you want to remove ${
-    myLibrary[currentCard.index].title
-  } from the list?`;
-
   if (e.target.matches(".delete-btn")) {
+    const prompt = `Do you want to remove ${
+      myLibrary[currentCard.index].title
+    } from the list?`;
+
     if (confirm(prompt)) {
       currentCard.container.remove();
       displaySuccessMsg("deleted", myLibrary[currentCard.index].title);
