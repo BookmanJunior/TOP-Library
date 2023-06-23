@@ -361,8 +361,9 @@ textarea {
   color: var(--color-section-title);
 }
 
-.play-animation {
-  animation: displayAlertAnimation 400ms ease-in-out;
+.custom-alert-msg.active {
+  display: flex;
+  animation: displayAlertAnimation 400ms ease-in-out forwards;
 }
 
 /* Animations */
