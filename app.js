@@ -44,6 +44,7 @@ const myLibrary = [
 let currentCard = {};
 const addBtn = document.querySelector(".add-btn");
 const modalContainer = document.querySelector(".modal-container");
+const modal = modalContainer.querySelector(".modal");
 const bookForm = document.querySelector("form");
 const mainContent = document.querySelector(".main-content");
 const modalCover = document.querySelector(".modal-header .modal-cover");
@@ -304,7 +305,7 @@ function displaySuccessMsg(status, item) {
 }
 
 function openModal() {
-  modalContainer.style.display = "flex";
+  modalContainer.classList.add("active");
 }
 
 function addBookModal() {
@@ -321,6 +322,14 @@ function closeModal(e) {
     e.target.className === "exit-btn" ||
     e.target.className === "modal-container"
   ) {
-    modalContainer.style.display = "none";
+    modalContainer.classList.add("closing");
+    modal.addEventListener(
+      "animationend",
+      () => {
+        modalContainer.classList.remove("closing");
+        modalContainer.classList.remove("active");
+      },
+      { once: true }
+    );
   }
 }
