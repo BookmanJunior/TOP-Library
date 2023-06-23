@@ -45,16 +45,19 @@ let currentCard = {};
 const addBtn = document.querySelector(".add-btn");
 const modalContainer = document.querySelector(".modal-container");
 const modal = modalContainer.querySelector(".modal");
+const modalExitBtn = modalContainer.querySelector(".exit-btn");
 const bookForm = document.querySelector("form");
 const mainContent = document.querySelector(".main-content");
 const modalCover = document.querySelector(".modal-header .modal-cover");
 const modalTitle = document.querySelector(".modal-header .title");
-const customAlert = document.getElementById("customAlert");
 const defaultImg =
   "https://raw.githubusercontent.com/BookmanJunior/TOP-Library/main/images/icons/defaultImg.jpg";
 
 addBtn.addEventListener("click", addBookModal);
-modalContainer.addEventListener("click", closeModal);
+modalContainer.addEventListener("click", (e) => {
+  if (e.target.matches(".modal-container")) closeModal();
+});
+modalExitBtn.addEventListener("click", closeModal);
 window.addEventListener("load", displayBook);
 mainContent.addEventListener("click", getCurrentCard);
 mainContent.addEventListener("click", deleteCard);
@@ -112,7 +115,7 @@ function addBookToLibrary(e) {
   );
   myLibrary.push(newBook);
   bookForm.reset();
-  modalContainer.style.display = "none";
+  closeModal();
   displayBook();
   displaySuccessMsg("added", newBook.title);
 }
@@ -135,7 +138,7 @@ function saveEdit(e) {
   for (item of bookForm) {
     myLibrary[currentCard.index][item.id] = item.value;
   }
-  modalContainer.style.display = "none";
+  closeModal();
   updateDom();
   displaySuccessMsg("updated", myLibrary[currentCard.index].title);
 }
@@ -318,21 +321,20 @@ function addBookModal() {
   modalTitle.textContent = "[Title]";
 }
 
-function closeModal(e) {
-  if (
-    e.target.className === "exit-btn" ||
-    e.target.className === "modal-container"
-  ) {
-    modalContainer.classList.add("closing");
-    modal.addEventListener(
-      "animationend",
-      () => {
+function closeModal() {
+  modalContainer.classList.add("closing");
+
+  // hide modal after closing animation ends
+  modal.addEventListener(
+    "animationend",
+    (e) => {
+      if (e.animationName === "modalClose") {
         modalContainer.classList.remove("closing");
         modalContainer.classList.remove("active");
-      },
-      { once: true }
-    );
-  }
+      }
+    },
+    { once: true }
+  );
 }
 
 function customNotification(msg) {
