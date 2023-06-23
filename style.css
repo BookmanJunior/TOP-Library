@@ -219,7 +219,7 @@ h1 {
 }
 
 .modal-container.closing .modal {
-  animation: modalClose 300ms ease-in-out forwards;
+  animation: modalClose 250ms ease-in-out forwards;
 }
 
 .modal {
